@@ -167,94 +167,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-kong" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/23/kong/">kong的安装及使用</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/23/kong/" class="archive-article-date">
-  	<time datetime="2018-11-23T07:55:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>通过执行以下命令启动PostgreSQL容器：<br>docker run -d –name kong-database –network=kong-net -p 5432:5432 -e “POSTGRES_USER=kong” -e “POSTGRES_DB=kong” postgres:9.6</p>
-<p>使用临时Kong容器运行数据库迁移：<br>docker run –rm –network=kong-net -e “KONG_DATABASE=postgres” -e “KONG_PG_HOST=kong-database” -e “KONG_CASSANDRA_CONTACT_POINTS=kong-database” kong:latest kong migrations up</p>
-<p>启动一个Kong容器并将其链接到数据库容器：<br>docker run -d –name kong –network=kong-net -e “KONG_DATABASE=postgres” -e “KONG_PG_HOST=kong-database” -e “KONG_CASSANDRA_CONTACT_POINTS=kong-database” -e “KONG_PROXY_ACCESS_LOG=/dev/stdout” -e “KONG_ADMIN_ACCESS_LOG=/dev/stdout” -e “KONG_PROXY_ERROR_LOG=/dev/stderr” -e “KONG_ADMIN_ERROR_LOG=/dev/stderr” -e “KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl” -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 8444:8444 kong:latest</p>
-<p>docker run –rm -p 8080:8080 pgbi/kong-dashboard start –kong-url <a href="http://192.168.99.100:8001" target="_blank" rel="noopener">http://192.168.99.100:8001</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微服务</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/微服务//" class="article-tag-list-link color4">微服务</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/23/kong/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-译：生产者-消费者问题在java中的演变" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -820,6 +732,93 @@ The logfile will contain the pid.
 
 
   
+    <article id="post-HTTP状态码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/09/HTTP状态码/">HTTP状态码</a>
+    </h1>
+  
+
+        
+        <a href="/2016/11/09/HTTP状态码/" class="archive-article-date">
+  	<time datetime="2016-11-09T03:22:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1XX    100-101    信息提示<br>2XX    200-206    成功<br>3XX    300-305    重定向<br>4XX    400-415    客户端错误<br>5XX    500-505    服务器错误</p>
+<hr>
+<p>200 OK 服务器成功处理了请求（这个是我们见到最多的）<br>301/302 Moved Permanently（重定向）请求的URL已移走。Response中应该包含一个Location URL, 说明资源现在所处的位置<br>304 Not Modified（未修改）客户的缓存资源是最新的， 要客户端使用缓存<br>404 Not Found 未找到资源<br>501 Internal Server Error服务器遇到一个错误，使其无法对请求提供服务</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Javascript//" class="article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/11/09/HTTP状态码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Javascript Array类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -934,93 +933,6 @@ The logfile will contain the pid.
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/11/09/Javascript Array类型/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HTTP状态码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/09/HTTP状态码/">HTTP状态码</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/09/HTTP状态码/" class="archive-article-date">
-  	<time datetime="2016-11-09T03:22:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1XX    100-101    信息提示<br>2XX    200-206    成功<br>3XX    300-305    重定向<br>4XX    400-415    客户端错误<br>5XX    500-505    服务器错误</p>
-<hr>
-<p>200 OK 服务器成功处理了请求（这个是我们见到最多的）<br>301/302 Moved Permanently（重定向）请求的URL已移走。Response中应该包含一个Location URL, 说明资源现在所处的位置<br>304 Not Modified（未修改）客户的缓存资源是最新的， 要客户端使用缓存<br>404 Not Found 未找到资源<br>501 Internal Server Error服务器遇到一个错误，使其无法对请求提供服务</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Javascript//" class="article-tag-list-link color1">Javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/09/HTTP状态码/">展开全文 >></a>
         </p>
       
 
@@ -1273,6 +1185,114 @@ The logfile will contain the pid.
 
 
   
+    <article id="post-Java环境变量配置（windows）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/21/Java环境变量配置（windows）/">Java环境变量配置（windows）</a>
+    </h1>
+  
+
+        
+        <a href="/2015/11/21/Java环境变量配置（windows）/" class="archive-article-date">
+  	<time datetime="2015-11-21T10:40:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、新建系统变量Java_Home</p>
+<pre><code>变量名：Java_Home 
+变量值：C:\Program Files\Java\jdk1.7.0_07
+</code></pre><p><strong>注：变量值这一栏主要填写的是你安装 java 的路径</strong></p>
+<blockquote>
+<p>作用：它指向jdk的安装目录，Eclipse/NetBeans/Tomcat等软件就是通过搜索JAVA_HOME变量来找到并使用安装好的jdk。</p>
+</blockquote>
+<hr>
+<p>2、编辑系统变量中的path</p>
+<p>在变量值一栏的最前面添加如下语句：</p>
+<pre><code>%Java_Home%\bin;%Java_Home%\jre\bin;
+</code></pre><blockquote>
+<p>作用：指定命令搜索路径，在shell下面执行命令时，它会到PATH变量所指定的路径中查找看是否能找到相应的命令程序。我们需要把jdk安装目录下的bin目录增加到现有的PATH变量中，bin目录中包含经常要用到的可执行文件如javac/java/javadoc等待，设置好PATH变量后，就可以在任何目录下执行javac/java等工具了。</p>
+</blockquote>
+<hr>
+<p>3、新建系统变量ClassPath</p>
+<pre><code>变量名：ClassPath
+变量值：.;%Java_Home%\bin;%Java_Home%\lib\dt.jar;%Java_Home%\lib\tools.jar
+</code></pre><p><strong>注：变量值最前面的 .; 不要漏掉。</strong></p>
+<blockquote>
+<p>作用：指定类搜索路径，要使用已经编写好的类，前提当然是能够找到它们了，JVM就是通过CLASSPTH来寻找类的。我们需要把jdk安装目录下的lib子目录中的dt.jar和tools.jar设置到CLASSPATH中，当然，当前目录“.”也必须加入到该变量中。</p>
+</blockquote>
+<hr>
+<p>4、调出<code>cmd</code>，分别输入<code>java</code>,<code>javac</code>,<code>java -version</code>以检查环境变量是否搭建好。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">配置</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/配置//" class="article-tag-list-link color3">配置</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/11/21/Java环境变量配置（windows）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1370,15 +1390,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1386,11 +1406,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1403,6 +1419,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">FE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">配置</a>
               </li>
             
             <div class="clearfix"></div>
